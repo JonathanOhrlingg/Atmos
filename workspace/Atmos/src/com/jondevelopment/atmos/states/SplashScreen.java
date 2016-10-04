@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
+import com.jondevelopment.atmos.Game;
 import com.jondevelopment.atmos.GameState;
 import com.jondevelopment.atmos.Launcher;
 import com.jondevelopment.atmos.Loader;
@@ -47,7 +48,7 @@ public class SplashScreen extends GameState {
 	
 	@Override
 	public void render(Graphics g, GameContainer gc) {
-		logo.draw((Settings.Screen.width-logo.getWidth())/2, (Settings.Screen.height-logo.getHeight())/2, fadeColor);
+		logo.draw((Settings.Screen.width-logo.getWidth()*Game.scale)/2, (Settings.Screen.height-logo.getHeight()*Game.scale)/2, Game.scale, fadeColor);
 	}
 	
 	@Override

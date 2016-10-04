@@ -16,16 +16,7 @@ public class Launcher {
 			appgc = new AppGameContainer((game = new Game()));
 			
 			// Load all settings
-			if(Settings.Screen.screen_mode == Settings.Screen.screen_modes.fullscreeen) {
-				appgc.setDisplayMode(Settings.Screen.width, Settings.Screen.height, true);
-			}
-			else {
-				appgc.setDisplayMode(Settings.Screen.width, Settings.Screen.height, false);
-				
-				// If in borderless tell opengl to not decorate the windows
-				if(Settings.Screen.screen_mode == Settings.Screen.screen_modes.borderless)
-					System.setProperty("org.lwjgl.opengl.Window.undecorated", "true");
-			}
+			resize(Settings.Screen.width, Settings.Screen.height);
 			appgc.setTargetFrameRate(Settings.Screen.max_fps);
 			appgc.setVSync(Settings.Screen.v_sync);
 			appgc.setMultiSample(Settings.Screen.anti_aliasing_level);
@@ -40,6 +31,25 @@ public class Launcher {
 			System.exit(Main.ERROR);
 		}
 		
+	}
+	
+	public static void resize(int width, int height) {
+		try {
+			if(Settings.Screen.screen_mode == Settings.Screen.screen_modes.fullscreen) {
+				appgc.setDisplayMode(width, height, true);
+			}
+			else {
+				appgc.setDisplayMode(width, height, false);
+				
+				// If in borderless tell opengl to not decorate the windows
+				if(Settings.Screen.screen_mode == Settings.Screen.screen_modes.borderless)
+					System.setProperty("org.lwjgl.opengl.Window.undecorated", "true");
+			}
+		}
+		catch (SlickException e) {
+			e.printStackTrace();
+			System.exit(Main.ERROR);
+		}
 	}
 	
 	public static void stop() {

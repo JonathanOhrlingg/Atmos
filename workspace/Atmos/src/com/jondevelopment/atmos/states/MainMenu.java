@@ -26,7 +26,7 @@ public class MainMenu extends GameState {
 	
 	@Override
 	public void render(Graphics g, GameContainer gc) {
-		g.drawString("Main Menu", 100, 100);
+		
 	}
 	
 	@Override

@@ -1,9 +1,14 @@
 package com.jondevelopment.atmos;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
@@ -33,6 +38,41 @@ public class Loader {
 			System.exit(Main.ERROR);
 		}
 		return image;
+	}
+	
+	public static InputStream getFileStream(String path) {
+		return Class.class.getResourceAsStream("/" + path);
+	}
+	
+	public static String[] loadTextFile(String path) {
+		try {
+			return IOUtils.toString(getFileStream(path), Charset.defaultCharset()).split(System.lineSeparator());
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			System.exit(Main.ERROR);
+		}
+		return null;
+	}
+	
+	public static String[] loadAbsoluteTextFile(String path) {
+		try {
+			return FileUtils.readFileToString(new File(path), Charset.defaultCharset()).split(System.lineSeparator());
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			System.exit(Main.ERROR);
+		}
+		return null;
+	}
+	
+	public static void writeAbsoluteTextFile(String path, String content) {
+		try {
+			FileUtils.write(new File(path), content, Charset.defaultCharset());
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
