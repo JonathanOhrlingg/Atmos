@@ -10,6 +10,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 import com.jondevelopment.atmos.states.MainMenu;
+import com.jondevelopment.atmos.states.ShaderTest;
 import com.jondevelopment.atmos.states.SplashScreen;
 
 public class Game extends BasicGame {
@@ -33,8 +34,10 @@ public class Game extends BasicGame {
 		addGameState(new SplashScreen());
 		addGameState(new MainMenu());
 		
+		addGameState(new ShaderTest());
+		
 		// Set the default state
-		changeState(SplashScreen.ID);
+		changeState(ShaderTest.ID);
 		
 		lastWidth = gc.getWidth();
 		lastHeight = gc.getHeight();

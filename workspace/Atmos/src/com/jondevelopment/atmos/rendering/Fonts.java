@@ -66,7 +66,7 @@ public class Fonts {
 		getFont(type, italic, size).drawString(x, y, message, color);
 	}
 	
-	private static UnicodeFont getFont(int type, boolean italic, int size) {
+	public static UnicodeFont getFont(int type, boolean italic, int size) {
 		if(lastType == type && lastItalic == italic && lastSize == size)
 			return lastFont;
 		lastType = type;

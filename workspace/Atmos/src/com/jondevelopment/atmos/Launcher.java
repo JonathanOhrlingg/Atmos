@@ -4,6 +4,8 @@ import org.lwjgl.openal.AL;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
+import com.jondevelopment.atmos.editor.Editor;
+
 public class Launcher {
 	
 	private static AppGameContainer appgc;
@@ -22,6 +24,8 @@ public class Launcher {
 			appgc.setMultiSample(Settings.Screen.anti_aliasing_level);
 			
 			Debug.log("Settings loaded...");
+			
+			appgc.setShowFPS(false);
 			
 			// Start the Game object
 			appgc.start();

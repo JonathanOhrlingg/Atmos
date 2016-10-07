@@ -1,32 +1,35 @@
 package com.jondevelopment.atmos.ui;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-public class UPanel {
+import com.jondevelopment.atmos.Game;
+
+public class UPanel extends UObject {
 	
 	public Image image;
-	public float x, y, width, height;
+	public float width, height;
 	
 	public UPanel(Image image, float x, float y) {
 		this(image, x, y, image.getWidth(), image.getHeight());
 	}
 	
 	public UPanel(Image image, float x, float y, float width, float height) {
+		super(x,y);
 		this.image = image;
-		this.x = x;
-		this.y = y;
 		this.width = width;
 		this.height = height;
 	}
 	
-	public void onClick(int x, int y) {
-		
+	@Override
+	public void render(Graphics g) {
+		float[] sum = getPositionSum(this);
+		image.draw(sum[0] * Game.scale, sum[1] * Game.scale, width * Game.scale, height * Game.scale);
 	}
 	
-	public void render() {
+	@Override
+	public void update(float delta) {
 		
 	}
-	
-	
 	
 }
